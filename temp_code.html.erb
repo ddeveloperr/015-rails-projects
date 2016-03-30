@@ -1,3 +1,51 @@
+#118 Contact Routes
+=================================================
+####config/routes.rb
+resources :contacts
+
+####console commands
+bundle exec rake routes
+git add .
+git commit -m "Added contacts route"
+git push origin contact_form
+
+
+=================================================
+#117 Create Contacts Controller
+=================================================
+####app/controllers/contacts_controller.rb
+class ContactsController < ApplicationController
+  def new
+  end
+  
+  def create
+  end
+end
+
+####console commands
+git add .
+git commit -m "Added contacts controller"
+
+
+=================================================
+#116 Contact model file
+=================================================
+
+####app/models/contact.rb
+class Contact < ActiveRecord::Base
+  
+end
+
+####console commands
+git status
+git add .
+git commit -m "Added contacts table and model"
+git push origin contact_form
+
+
+
+
+=================================================
 #115 Contacts Database
 =================================================
 
