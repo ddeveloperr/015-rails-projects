@@ -1,4 +1,52 @@
+#115 Contacts Database
+=================================================
 
+####console commands
+cd workspace/simplecodecasts_saas
+git status
+git checkout development
+git merge layout_improvements
+git checkout -b contact_form
+bundle exec rails generate migration CreateContacts
+
+####db/migrate/xyz_create_contacts.rb
+class CreateContacts < ActiveRecord::Migration
+  def change
+    create_table :contacts do |t|
+      t.string :name
+      t.string :email
+      t.text :comments
+      
+      t.timestamps
+    end
+  end
+end
+
+####console commands
+bundle exec rake db:migrate
+
+
+
+
+====================================================
+#112 Step 
+
+####app/views/layouts/application.html.erb
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+
+####app/assets/stylesheets/custom.css.scss
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+####console commands
+git add .
+git commit -m "Reorganized css"
+git push origin layout_improvements
+
+
+==================================================
 #111 Step Font awesome
 
 ####app/views/layouts/application.html.erb
@@ -29,20 +77,3 @@ git push origin layout_improvements
 
 
 ####################################################
-#110 Step - More view updates
-####app/views/layouts/application.html.erb
-<div class="container">  
-  <%= yield %>
-</div>
-
-####app/views/pages/home.html.erb
-<div class="jumbotron text-center">
-  <h1>Welcome to Dev Match</h1>
-  <h3>A membership site where entrepreneurs can meet developers.</h3>
-</div>
-
-####console commands
-git add .
-git commit -m "Added bootstrap classes and copy"
-git push origin layout_improvements
-
