@@ -1,5 +1,35 @@
 
-#109 Step - More view updates
+#111 Step Font awesome
+
+####app/views/layouts/application.html.erb
+...
+<title>Dev Match</title>
+...
+<%= link_to root_path, class: 'navbar-brand' do %>
+	<i class="fa fa-users"></i>
+	Dev Match
+<% end %>
+...
+
+####Gemfile
+...
+gem 'font-awesome-sass', '4.2.0'
+...
+
+####app/assets/stylesheets/application.css.scss
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+####console commands
+git status
+git add .
+git commit -m "Added font awesome gem and logo to navbar"
+git push origin layout_improvements
+
+
+
+####################################################
+#110 Step - More view updates
 ####app/views/layouts/application.html.erb
 <div class="container">  
   <%= yield %>
