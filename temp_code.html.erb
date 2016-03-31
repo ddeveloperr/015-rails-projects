@@ -1,3 +1,89 @@
+#122 Save to database
+=========
+
+####app/controllers/contacts_controller.rb
+...
+  def create
+    @contact = Contact.new(contact_params)
+    
+    if @contact.save
+      redirect_to new_contact_path, notice: "Message sent."
+    else
+      redirect_to new_contact_path, notice: "Error occured."
+    end
+  end
+  
+  private
+    def contact_params
+      params.require(:contact).permit(:name, :email, :comments)
+    end
+...
+
+
+=========
+
+
+#121 
+
+####app/views/layouts/application.html.erb
+<li><%= link_to "Contact Us", new_contact_path %></li>
+
+####console commands
+git add .
+git commit -m "Added contact page to nav bar"
+git push origin contact_form
+
+=========
+#120 Rails console 
+=================================================
+
+####console commands
+bundle exec rails console
+
+=================================================
+#119 Contact Form
+=================================================
+
+####app/controllers/contacts_controller.rb
+class ContactsController < ApplicationController
+  def new
+    @contact = Contact.new
+  end
+...
+
+####app/views/contacts/new.html.erb
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="well">
+      <%= form_for @contact do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :comments %>
+          <%= f.text_area :comments, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Submit', class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+####console commands
+git add .
+git commit -m "Created contact form view"
+git push origin contact_form
+
+
+=================================================
+
 #118 Contact Routes
 =================================================
 ####config/routes.rb

@@ -25,11 +25,16 @@
     <div class="collapse navbar-collapse" id="main-nav-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact us", new_contact_path  %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
    </div>
   </nav>
-
+  
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
+  
   <div class="container">
   <%= yield %>
   </div>
