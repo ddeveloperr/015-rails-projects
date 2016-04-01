@@ -1,5 +1,43 @@
+=================================================
+#125
+=================================================
+
+####app/models/contact.rb
+class Contact < ActiveRecord::Base
+  validates :name, presence: true
+  validates :email, presence: true
+end
+
+=================================================
+#124
+=================================================
+
+####app/controllers/contacts_controller.rb
+def create
+  @contact = Contact.new(contact_params)
+  
+  if @contact.save
+    flash[:success] = 'Message sent.'
+    redirect_to new_contact_path
+  else
+    flash[:danger] = 'Error occured, message has not been sent.'
+    redirect_to new_contact_path
+  end
+end
+
+####app/views/layouts/application.html.erb
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "alert alert-#{key}" %>
+<% end %>
+
+=================================================
+#123
+=================================================
+
+
+=================================================
 #122 Save to database
-=========
+=================================================
 
 ####app/controllers/contacts_controller.rb
 ...
@@ -19,11 +57,29 @@
     end
 ...
 
+####app/controllers/contacts_controller.rb
+def create
+  @contact = Contact.new(contact_params)
+  
+  if @contact.save
+    flash[:success] = 'Message sent.'
+    redirect_to new_contact_path
+  else
+    flash[:danger] = 'Error occured, message has not been sent.'
+    redirect_to new_contact_path
+  end
+end
 
-=========
+####app/views/layouts/application.html.erb
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "alert alert-#{key}" %>
+<% end %>
 
 
+
+=================================================
 #121 
+
 
 ####app/views/layouts/application.html.erb
 <li><%= link_to "Contact Us", new_contact_path %></li>
