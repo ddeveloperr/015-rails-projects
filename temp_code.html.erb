@@ -2,6 +2,74 @@
 #125
 =================================================
 
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#125
+=================================================
+
+=================================================
+#130
+=================================================
+####app/views/contact_mailer/contact_email.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <p>You have received a message from the site's contact form, from <%= "#{ @name }, #{ @email }." %></p>
+    <p><%= @body %></p>
+  </body>
+</html>
+
+=================================================
+#129
+=================================================
+
+####console commands
+git add .
+git commit -m "Added validations and create action"
+git push origin contact_form
+
+####app/mailers/contact_mailer.rb
+class ContactMailer < ActionMailer::Base
+  default to: 'your@email_address.com'
+  
+  def contact_email(name, email, body)
+    @name = name
+    @email = email
+    @body = body
+    
+    mail(from: email, subject: 'Contact Form Message')
+  end
+end
+
+=================================================
+#125
+=================================================
+
 ####app/models/contact.rb
 class Contact < ActiveRecord::Base
   validates :name, presence: true
@@ -79,7 +147,7 @@ end
 
 =================================================
 #121 
-
+=================================================
 
 ####app/views/layouts/application.html.erb
 <li><%= link_to "Contact Us", new_contact_path %></li>
@@ -89,7 +157,7 @@ git add .
 git commit -m "Added contact page to nav bar"
 git push origin contact_form
 
-=========
+=================================================
 #120 Rails console 
 =================================================
 
@@ -139,9 +207,9 @@ git push origin contact_form
 
 
 =================================================
-
 #118 Contact Routes
 =================================================
+
 ####config/routes.rb
 resources :contacts
 
@@ -155,6 +223,7 @@ git push origin contact_form
 =================================================
 #117 Create Contacts Controller
 =================================================
+
 ####app/controllers/contacts_controller.rb
 class ContactsController < ApplicationController
   def new
@@ -218,8 +287,9 @@ bundle exec rake db:migrate
 
 
 
-====================================================
+=================================================
 #112 Step 
+=================================================
 
 ####app/views/layouts/application.html.erb
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -238,6 +308,7 @@ git push origin layout_improvements
 
 ==================================================
 #111 Step Font awesome
+=================================================
 
 ####app/views/layouts/application.html.erb
 ...
@@ -267,3 +338,7 @@ git push origin layout_improvements
 
 
 ####################################################
+=================================================
+
+
+
