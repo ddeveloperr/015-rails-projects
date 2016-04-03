@@ -25,6 +25,44 @@
 =================================================
 #132
 =================================================
+####console commands
+git checkout development
+git merge contact_form
+git push origin development
+git checkout master
+git merge development
+git push origin master
+git push heroku master
+heroku run rake db:migrate
+heroku domains
+heroku addons:add sendgrid:starter
+(add your card info at https://heroku.com/verify)
+heroku addons:add sendgrid:starter
+
+
+####config/environment.rb
+# Load the Rails application.
+require File.expand_path('../application', __FILE__)
+
+# Initialize the Rails application.
+Rails.application.initialize!
+
+ActionMailer::Base.smtp_settings = {
+  :address => 'smtp.sendgrid.net',
+  :port => '587',
+  :authentication => :plain,
+  :user_name => ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD'],
+  :domain => 'heroku.com',
+  :enable_startstls_auto => true
+}
+
+####console commands
+git status
+git add .
+git commit -m "Added actionmailer settings"
+git push origin master
+git push heroku master
 
 =================================================
 #131
