@@ -7,12 +7,133 @@
 =================================================
 
 =================================================
-#125
+#139 DB Plan - Tables and Models, Stripe integration
 =================================================
 
+####console commands
+git checkout development
+git merge user_authentication
+git checkout -b stripe_integration
+bundle exec rails g migration CreatePlans
+
+####db/migrate/20141223183721_create_plans.rb
+class CreatePlans < ActiveRecord::Migration
+  def change
+    create_table :plans do |t|
+      t.string :name
+      t.decimal :price
+      
+      t.timestamps
+    end
+  end
+end
+
+####console commands
+bundle exec rake db:migrate
+
+####app/models/plan.rb
+class Plan < ActiveRecord::Base
+  
+end
+
+
+####console commands
+bundle exec rails c
+> Plan.create(name: 'basic', price: 0)
+> Plan.create(name: 'pro', price: 10)
+> exit
+
+git add .
+git commit -m "Added plan model and db table"
+git push origin stripe_integration
+
+
 =================================================
-#125
+#137 Navbar User Links
 =================================================
+####app/views/layouts/application.html.erb
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dev Match</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class='container'>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <i class="fa fa-users"></i>
+        Dev Match
+      <% end %>
+    </div>
+    <div class="collapse navbar-collapse" id="main-nav-collapse">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+      <div class="nav navbar-nav navbar-right">
+        <% if current_user %> 
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary navbar-btn' %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary navbar-btn', method: :get %>
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success navbar-btn', method: :get %>
+        <% end %>
+      </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Contact Us", new_contact_path %></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+ </nav>
+<div class="container">
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
+  
+  <%= yield %>
+</div>
+  
+</body>
+</html>
+
+
+
+
+####app/views/devise/sessions/new.html.erb
+...
+<%= f.submit "Log in", class: 'btn btn-primary' %>
+...
+
+
+####console commands
+git add .
+git commit -m "Updated navbar with user links"
+git push origin user_authentication
+
 
 =================================================
 #136 Devise forms
