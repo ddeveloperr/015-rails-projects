@@ -23,6 +23,15 @@
          <% end %>
     </div>
     <div class="collapse navbar-collapse" id="main-nav-collapse">
+      
+      <div class = "nav navbar-nav navbar-right">
+        <% if current_user %>
+          <%= button_to "Sing Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: 'btn btn-warning navbar-btn', method: :get %>
+          <%= link_to "Sign Up" new_user_registration_path, class: 'btn btn-warning navbar-btn', method: :get %>
+      </div>
+      
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact us", new_contact_path  %></li>
