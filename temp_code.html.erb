@@ -3,8 +3,37 @@
 =================================================
 
 =================================================
-#125
+#140
 =================================================
+
+####app/models/plan.rb
+class Plan < ActiveRecord::Base
+  has_many :users
+end
+
+####app/models/user.rb
+...
+belongs_to :plan
+...
+
+
+####console commands
+bundle exec rails g migration AddPlanToUser
+
+
+####db/migrate/xyz_add_plan_to_user.rb
+class AddPlanToUser < ActiveRecord::Migration
+  def change
+    add_column :users, :plan_id, :integer
+  end
+end
+
+
+####console commands
+bundle exec rake db:migrate
+git add .
+git commit -m "Added association for plans and users"
+git push origin stripe_integration
 
 =================================================
 #139 DB Plan - Tables and Models, Stripe integration
