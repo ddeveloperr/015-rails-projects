@@ -1,8 +1,22 @@
-<div class = "jumbotron text-center">
-    <h2>Welcome to Fullstack Crossroads</h2>
-    <h5>A cool place where developers and entrepreneurs exchange their experiences</h5>
+<div class="jumbotron text-center">
+  <h1>Welcome to Fullstack Crossroads</h1>
+  <h3>A cool place where developers and entrepreneurs exchange their experiences.</h3>
 </div>
-
-
-
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h2 class="text-center">Basic Membership</h2>
+      <h4>Sign up for free and get basic access to the community.</h4>
+      <br/>
+      <%= link_to "Sign up with Basic", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <h2 class="text-center">Pro Membership</h2>
+      <h4>Sign up for the pro account for $10/month and get access to the community and contact information!</h4>
+      <%= link_to "Sign up with Pro", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+    </div>
+  </div>
+</div>
 
