@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring'
   
 # Add devise gem
-gem 'devise', '3.4.1'
+gem 'devise', '4.7.1'
 
 gem 'stripe', '~> 1.38'
 
