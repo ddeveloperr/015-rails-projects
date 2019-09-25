@@ -9,7 +9,7 @@ gem 'sqlite3', group: [:development, :test]
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use bootstrap library for styles
-gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap-sass', '~> 3.4.1'
 # Add gem for font awesome 
 gem 'font-awesome-sass', '4.3.0'
 
